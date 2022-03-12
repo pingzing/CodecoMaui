@@ -1,0 +1,25 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    
+    x:Class="CodecoMaui.CodeLookupPage"                          
+    
+    Title="Code Lookup"
+    
+    BindingContext="{Binding Source={RelativeSource Self}}">
+
+    <Grid RowDefinitions="*, Auto" Padding="5">
+        
+        <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="5">
+            <Label x:Name="KeyLabel" Text="🔑" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="50"/>
+            <Label x:Name="FoundCodeLabel" LineBreakMode="CharacterWrap" Text="" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+            <Button x:Name="CopyButton" Grid.Column="1" Text="Copy" Clicked="CopyButton_Clicked" HorizontalOptions="Center" IsEnabled="False"/>
+            <Editor x:Name="KeyInputEditor" Placeholder="Code's key, ex. 0123" TextChanged="KeyInputEditor_TextChanged" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False" />
+        </StackLayout>
+
+
+        <Button x:Name="LoadFileButton" Grid.Row="1" Text="Load file" Clicked="LoadFileButton_Clicked" />
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,43 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CodecoMaui.Models"
+             
+             x:Class="CodecoMaui.Pages.LoadFilePage"
+             
+             Title="Load a file">
+
+    <Grid RowDefinitions="*, Auto" Margin="5" RowSpacing="5">
+
+        <CollectionView x:Name="SavedKeyFilesCollectionView"
+                        SelectionMode="Single"
+                        SelectionChanged="SavedKeyFilesCollectionView_SelectionChanged">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:KeyFile">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal"/>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#C7777777"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Label Padding="5" Text="{Binding FileName}" Style="{DynamicResource ListItemTextStyle}" FontSize="25"/>
+                    </Grid>                                            
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+            <CollectionView.Footer>
+                <Button x:Name="AddNewButton" Text="Add new" Clicked="AddNewButton_Clicked"/>
+            </CollectionView.Footer>
+            
+        </CollectionView>
+
+        <Button x:Name="LoadSelectedButton" Grid.Row="1" IsEnabled="False" Text="Load selected" Clicked="LoadSelectedButton_Clicked"/>
+
+    </Grid>
+    
+</ContentPage>
